@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Play Trivia!</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="centered full-screen">
+      <game-screen></game-screen>
+    </div>
+
+    <div class="background-full-screen">
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      <lottie-player
+        src="public/background-animation2.json"
+        background="#FFFFFF"
+        speed="1"
+        autoplay
+        direction="1"
+        mode="normal"
+      ></lottie-player>
+    </div>
+
+    <template id="game-menu">
+      <h1 class="main-title fade-in-left delay-xs">Play Trivia!</h1>
+      <div class="card fade-in-left delay-sm">
+        <div class="form-control">
+          <label>Select Category</label>
+          <select id="menu-select-category"></select>
+        </div>
+
+        <div class="form-control">
+          <label>Difficulty</label>
+          <div class="button-group difficulty"></div>
+        </div>
+
+        <div class="form-control">
+          <label>Question type</label>
+          <div class="button-group question-type"></div>
+        </div>
+
+        <button class="action">Start!</button>
+      </div>
+    </template>
+
+    <template id="game-view">
+      <div class="dashboard fade-in-left delay-sm">
+        <div class="questions">
+          Question <span class="current-question-index"></span>/<span
+            class="total-questions"
+          ></span>
+        </div>
+      </div>
+
+      <div class="card fade-in-left question">
+        <p class="current-question-text"></p>
+        <div class="button-group answer-buttons"></div>
+      </div>
+
+      <div class="questions-overview"></div>
+    </template>
+
+    <template id="game-ended">
+      <div class="centered fade-in-left">
+        <h1 class="main-title">Game Over!</h1>
+        <p class="final-score">Your Score: <span class="score-value"></span></p>
+        <button class="action play-again">Play Again</button>
+      </div>
+    </template>
+
+    <script type="module" src="components/GameScreen.js"></script>
+    <script type="module" src="components/GameMenu.js"></script>
+    <script type="module" src="components/GameView.js"></script>
+    <script type="module" src="components/GameEnded.js"></script>
+  </body>
+</html>

@@ -1,0 +1,230 @@
+:root {
+  --lightness-light: 45%;
+  --lightness-medium: 40%;
+  --lightness-dark: 35%;
+  --lightness-darker: 30%;
+
+  --primary-color-hue: 172;
+  --primary-color-saturation: 57%;
+  --primary-color: hsl(
+    var(--primary-color-hue),
+    var(--primary-color-saturation),
+    var(--lightness-medium)
+  );
+
+  --secondary-color-hue: 172;
+  --secondary-color: hsl(
+    var(--secondary-color-hue),
+    100%,
+    var(--lightness-light)
+  );
+
+  --border-color: #ccc;
+  --border-radius: 10px;
+}
+
+body {
+  font-family: "Radio Canada Big", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-screen {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-title {
+  font-size: 5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+@keyframes fadeInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-left {
+  opacity: 0;
+  animation: fadeInFromLeft 0.5s cubic-bezier(0, 0, 0, 0.99) forwards;
+}
+
+@keyframes fadeOutToRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+.fade-out-right {
+  opacity: 1;
+  animation: fadeOutToRight 0.5s cubic-bezier(0, 0, 0, 0.99) forwards;
+}
+
+.delay-xs {
+  animation-delay: 0.1s;
+}
+
+.delay-sm {
+  animation-delay: 0.3s;
+}
+
+.delay-md {
+  animation-delay: 0.6s;
+}
+
+button.action {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  font-family: "Radio Canada Big", sans-serif;
+  font-size: 1.5rem;
+}
+
+button.action.sm {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+
+button.action:hover {
+  background-color: hsl(var(--primary-color-hue), 57%, var(--lightness-dark));
+}
+
+button.action:active {
+  background-color: hsl(var(--primary-color-hue), 57%, var(--lightness-darker));
+}
+
+.card .button-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+select {
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Radio Canada Big", sans-serif;
+  appearance: none;
+  background-image: url("/public/select-icon.svg");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1rem;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.button-group button {
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  outline: none;
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Radio Canada Big", sans-serif;
+  font-size: 0.6rem;
+  flex-grow: 1;
+}
+
+.button-group button.selected {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+.button-group button.correct {
+  background-color: green;
+  color: white;
+  border-color: green;
+}
+
+.button-group button.incorrect {
+  background-color: red;
+  color: white;
+  border-color: red;
+}
+
+.button-group button:not(.correct):not(.incorrect):hover:not(.selected) {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.background-full-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+lottie-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card {
+  background-color: var(--card-background-color, #ffffff);
+  padding: var(--card-padding, 20px);
+  border-radius: var(--border-radius, 10px);
+  border: var(--card-border, 1px solid black);
+  box-shadow: var(--card-box-shadow, 4px 4px 0 0 black);
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap, 1.5rem);
+  max-width: var(--card-max-width, 500px);
+}
+
+.card .form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.final-score {
+  font-size: 2rem;
+  font-weight: bold;
+}
