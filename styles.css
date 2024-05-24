@@ -133,7 +133,7 @@ select {
   cursor: pointer;
   font-family: "Radio Canada Big", sans-serif;
   appearance: none;
-  background-image: url("/public/select-icon.svg");
+  background-image: url("/vanilla-trivia/public/select-icon.svg");
   background-repeat: no-repeat;
   background-position: right 0.5rem center;
   background-size: 1rem;
